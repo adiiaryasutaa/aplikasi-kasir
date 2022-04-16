@@ -1,18 +1,22 @@
-package com.ceceply.applikasikasir.GUI;
+package com.ceceply.aplikasikasir.GUI;
 
-import com.ceceply.applikasikasir.model.Item;
+import com.ceceply.aplikasikasir.data.ItemCartData;
+import com.ceceply.aplikasikasir.factory.ItemFactory;
+import com.ceceply.aplikasikasir.model.Item;
+import com.ceceply.aplikasikasir.util.CurrencyConverter;
 
 import javax.swing.*;
-import javax.swing.event.ListDataListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Vector;
 
 public class MainGUI extends JFrame {
 
-	private Object[] itemTableHeader;
+	private Vector<String> tableHeader;
 	private TableModel itemTableModel;
 
 	private final int ITEM_NUMBER_COLUMN      = 0;
@@ -23,10 +27,18 @@ public class MainGUI extends JFrame {
 
 	private ComboBoxModel<Item> comboBoxModel;
 
+	private ItemFactory itemFactory;
+	private ItemCartData itemCartData;
+
 	public MainGUI() {
-		this.itemTableHeader = new String[] {"No", "Nama Item", "Kuantitas", "Harga Satuan", "Harga Total"};
-		this.itemTableModel = new DefaultTableModel(
-			new Object[][] {{1, "Minyak", 10, "Rp 10.000", "Rp 100.000"}, {2, "Tissue", "2", "Rp 5.000", "Rp 10.000"}}, this.itemTableHeader);
+		this.tableHeader = new Vector<>();
+		tableHeader.addAll(Arrays.asList("No", "Nama Item", "Kuantitas", "Harga Satuan", "Harga Total"));
+
+		this.itemFactory = new ItemFactory();
+		this.itemCartData = new ItemCartData();
+
+		this.itemTableModel = new DefaultTableModel(this.itemCartData.dataForTable(), this.tableHeader);
+
 		this.comboBoxModel = new DefaultComboBoxModel<>();
 
 		this.initComponent();
@@ -67,15 +79,22 @@ public class MainGUI extends JFrame {
 	}
 
 	private void setUpItemComboBox() {
-		this.itemComboBox.addItem(new Item("Item.Minyak", "Minyak", 10_000.0));
-		this.itemComboBox.addItem(new Item("Item.Beras", "Beras 10Kg", 60_000.0));
+		for (Item item : this.itemFactory.getArrayList()) {
+			this.itemComboBox.addItem(item);
+		}
 
 		this.comboBoxModel.setSelectedItem(null);
 	}
 
+	private void setOverallTotalPriceTextField() {
+		Long currentOverallTotalPrice = CurrencyConverter.toLong(this.overallTotalPriceTextField.getText().trim());
+
+
+	}
+
 	/* ================ COMPONENTS ================ */
 	private JPanel mainPanel;
-	private JComboBox itemComboBox;
+	private JComboBox<Item> itemComboBox;
 	private JTextField quantityTextField;
 	private JTextField unitPriceTextField;
 	private JTextField totalPriceTextField;
@@ -83,7 +102,7 @@ public class MainGUI extends JFrame {
 	private JTable itemTable;
 	private JButton resetButton;
 	private JPanel formPanel;
-	private JTextField totalOverallPriceTextField;
+	private JTextField overallTotalPriceTextField;
 	private JButton saveAndCreateNewButton;
 	private JScrollPane itemScrollPane;
 }

@@ -1,6 +1,6 @@
-package com.ceceply.applikasikasir;
+package com.ceceply.aplikasikasir;
 
-import com.ceceply.applikasikasir.GUI.MainGUI;
+import com.ceceply.aplikasikasir.GUI.MainGUI;
 
 import javax.swing.*;
 
