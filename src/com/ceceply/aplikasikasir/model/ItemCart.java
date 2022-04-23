@@ -2,7 +2,6 @@ package com.ceceply.aplikasikasir.model;
 
 import com.ceceply.aplikasikasir.util.CurrencyConverter;
 
-import java.util.HashMap;
 import java.util.Vector;
 
 public class ItemCart {

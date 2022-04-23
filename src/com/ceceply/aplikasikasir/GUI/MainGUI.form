@@ -102,10 +102,12 @@
               </grid>
             </constraints>
             <properties>
-              <editable value="true"/>
+              <editable value="false"/>
               <font name="Segoe UI" size="12" style="1"/>
               <inheritsPopupMenu value="false"/>
               <model/>
+              <opaque value="true"/>
+              <popupVisible value="false"/>
               <toolTipText value=""/>
             </properties>
           </component>
@@ -141,6 +143,7 @@
               </grid>
             </constraints>
             <properties>
+              <editable value="false"/>
               <font name="Segoe UI" size="12" style="1"/>
               <margin top="2" left="6" bottom="2" right="6"/>
               <text value="Rp 0"/>
@@ -154,7 +157,9 @@
             </constraints>
             <properties>
               <editable value="false"/>
+              <enabled value="true"/>
               <font name="Segoe UI" size="12" style="1"/>
+              <margin top="2" left="6" bottom="2" right="6"/>
               <text value="Rp 0"/>
             </properties>
           </component>
@@ -278,16 +283,18 @@
               <text value="Rp 0"/>
             </properties>
           </component>
-          <component id="d84e" class="javax.swing.JButton" binding="saveAndCreateNewButton">
+          <component id="d84e" class="javax.swing.JButton" binding="createNewButton">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="24"/>
               </grid>
             </constraints>
             <properties>
+              <actionCommand value="Save and create new"/>
               <focusPainted value="false"/>
               <font name="Segoe UI" size="12" style="1"/>
-              <text value="Save and create new"/>
+              <label value="Create new"/>
+              <text value="Create new"/>
             </properties>
           </component>
           <hspacer id="459bb">

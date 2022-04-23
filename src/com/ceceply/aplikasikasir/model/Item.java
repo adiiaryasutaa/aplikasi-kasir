@@ -1,8 +1,5 @@
 package com.ceceply.aplikasikasir.model;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class Item {
 	private String name;
 	private Long price;
