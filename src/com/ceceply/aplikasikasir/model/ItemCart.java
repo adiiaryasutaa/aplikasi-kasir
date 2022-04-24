@@ -16,48 +16,94 @@ public class ItemCart {
 	public static final int ITEM_PRICE        = 3;
 	public static final int ITEM_TOTAL_PRICE  = 4;
 
+	/**
+	 *
+	 * @param index
+	 * @param item
+	 * @param quantity
+	 */
 	public ItemCart(Integer index, Item item, Integer quantity) {
 		this.index = index;
 		this.item = item;
 		this.quantity = quantity;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Integer getIndex() {
 		return index;
 	}
 
+	/**
+	 *
+	 * @param index
+	 */
 	public void setIndex(Integer index) {
 		this.index = index;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Item getItem() {
 		return item;
 	}
 
+	/**
+	 *
+	 * @param item
+	 */
 	public void setItem(Item item) {
 		this.item = item;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getPriceCurrency() {
 		return CurrencyConverter.toCurrency(this.item.getPrice());
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Integer getQuantity() {
 		return quantity;
 	}
 
+	/**
+	 *
+	 * @param quantity
+	 */
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Long getTotalPrice() {
 		return this.item.getPrice() * this.quantity;
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public String getTotalPriceCurrency() {
 		return CurrencyConverter.toCurrency(this.getTotalPrice());
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Vector<Object> toVector() {
 		Vector<Object> a = new Vector<>();
 

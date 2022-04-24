@@ -9,18 +9,34 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ *
+ *
+ */
 public class Json {
 	private Gson gson;
 
+	/**
+	 *
+	 *
+	 */
 	public Json() {
 		this.gson = new Gson();
 	}
 
+	/**
+	 *
+	 * @param item
+	 */
 	public void addItem(Item item) {
 		String json = this.gson.toJson(item);
 		System.out.println(json);
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	public Collection<Item> readAllItemsFromJson() {
 		InputStream is = getClass().getClassLoader().getResourceAsStream("items.json");
 		String json = null;

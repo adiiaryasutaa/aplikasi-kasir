@@ -41,10 +41,7 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI() {
 		this.tableHeader = new Vector<>();
-		tableHeader.addAll(Arrays.asList("No", "Nama Item", "Kuantitas", "Harga Satuan", "Harga Total"));
-
 		this.tableData = new Vector<>();
-
 		this.itemTableModel = new DefaultTableModel(this.tableData, this.tableHeader);
 
 		this.initComponent();
@@ -82,7 +79,7 @@ public class MainGUI extends JFrame {
 		this.itemTableModel.addTableModelListener(this::tableModelListener);
 		this.createNewButton.addActionListener(this::createNewButtonActionListener);
 
-		this.check();
+		this.disableIfItemNotSelected();
 
 //		Preparing frame
 		this.setContentPane(this.mainPanel);
@@ -93,15 +90,13 @@ public class MainGUI extends JFrame {
 	 *
 	 *
 	 */
-	private void check() {
+	private void disableIfItemNotSelected() {
 		if (this.getSelectedItem() == null) {
 			this.quantityTextField.setEditable(false);
-			this.unitPriceTextField.setEditable(false);
 			this.insertButton.setEnabled(false);
 			this.resetButton.setEnabled(false);
 		} else {
 			this.quantityTextField.setEditable(true);
-			this.unitPriceTextField.setEditable(true);
 			this.insertButton.setEnabled(true);
 			this.resetButton.setEnabled(true);
 		}
@@ -112,6 +107,8 @@ public class MainGUI extends JFrame {
 	 *
 	 */
 	private void setUpItemTable() {
+		this.tableHeader.addAll(Arrays.asList("No", "Nama Item", "Kuantitas", "Harga Satuan", "Harga Total"));
+
 		this.itemTable.setModel(this.itemTableModel);
 		this.itemTable.setAutoCreateColumnsFromModel(false);
 		this.itemTable.getTableHeader().setReorderingAllowed(false);
@@ -208,7 +205,7 @@ public class MainGUI extends JFrame {
 		Item selectedItem = this.getSelectedItem();
 		Integer quantity = Integer.valueOf(this.quantityTextField.getText().trim());
 
-		this.check();
+		this.disableIfItemNotSelected();
 
 		if (selectedItem == null) {
 			this.resetQuantity();

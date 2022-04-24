@@ -4,9 +4,16 @@ import com.ceceply.aplikasikasir.model.Item;
 
 import java.util.ArrayList;
 
+/**
+ *
+ *
+ */
 public class ItemList extends ArrayList<Item> {
 	private Json json;
 
+	/**
+	 *
+	 */
 	public ItemList() {
 		super();
 

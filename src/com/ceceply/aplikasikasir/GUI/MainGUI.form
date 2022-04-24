@@ -144,6 +144,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
+              <enabled value="true"/>
               <font name="Segoe UI" size="12" style="1"/>
               <margin top="2" left="6" bottom="2" right="6"/>
               <text value="Rp 0"/>
