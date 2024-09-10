@@ -1,10 +1,7 @@
 package com.ceceply.aplikasikasir.util;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -18,7 +15,7 @@ public class CurrencyConverter {
 	 * @param value
 	 * @return
 	 */
-	public static @NotNull String toCurrency(Long value) {
+	public static String toCurrency(Long value) {
 		NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 		return numberFormat.format(value).replace("IDR", "Rp ");
 	}
@@ -28,7 +25,7 @@ public class CurrencyConverter {
 	 * @param value
 	 * @return
 	 */
-	public static Long toLong(@NotNull String value) {
+	public static Long toLong(String value) {
 		NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 		try {
 			return (Long) numberFormat.parse(value.replace("Rp ", "IDR"));
